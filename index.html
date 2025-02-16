@@ -14,20 +14,21 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: flex-start; /* Align items to the top */
             padding: 20px;
-            overflow-y: auto;
+            overflow-y: auto; /* Allow vertical scrolling */
+            position: relative;
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             width: 100%;
             max-width: 900px;
             transition: all 0.3s ease;
@@ -47,11 +48,11 @@
         }
 
         h1 {
-            color: #ff6f61;
+            color: #00796b;
             margin-bottom: 30px;
             font-size: 2.5em;
             text-align: center;
-            background: linear-gradient(45deg, #ff6f61, #d32f2f);
+            background: linear-gradient(45deg, #00796b, #004d40);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: textGlow 1.5s infinite alternate;
@@ -59,10 +60,10 @@
 
         @keyframes textGlow {
             from {
-                text-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
+                text-shadow: 0 0 10px rgba(0, 121, 107, 0.5);
             }
             to {
-                text-shadow: 0 0 20px rgba(255, 111, 97, 1);
+                text-shadow: 0 0 20px rgba(0, 121, 107, 1);
             }
         }
 
@@ -72,40 +73,38 @@
             max-width: 600px;
             display: flex;
             gap: 10px;
+            animation: slideDown 0.3s ease;
         }
 
         .url-input {
             flex: 1;
             padding: 12px 20px;
-            border: 2px solid #f5a623;
+            border: 2px solid #e0e0e0;
             border-radius: 12px;
             font-size: 16px;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .url-input:focus {
             outline: none;
-            border-color: #ff6f61;
-            box-shadow: 0 0 0 3px rgba(255, 111, 97, 0.2);
+            border-color: #00796b;
+            box-shadow: 0 0 0 3px rgba(0,121,107,0.1);
         }
 
         .url-submit {
             padding: 12px 24px;
-            background: #ff6f61;
+            background: #00796b;
             color: white;
             border: none;
             border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .url-submit:hover {
-            background: #d32f2f;
+            background: #004d40;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         #imagePreview {
@@ -114,20 +113,34 @@
             margin: 20px auto;
             display: none;
             border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
 
         #result {
             margin-top: 20px;
             padding: 30px;
-            background: rgba(252, 182, 159, 0.9);
+            background: rgba(224, 247, 250, 0.9);
             border-radius: 15px;
             display: none;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .loading {
             display: none;
             margin: 20px 0;
+            position: relative;
         }
 
         .loading:after {
@@ -138,13 +151,23 @@
             margin: 0 auto;
             border-radius: 50%;
             border: 3px solid #f3f3f3;
-            border-top: 3px solid #ff6f61;
+            border-top: 3px solid #00796b;
             animation: spin 1s linear infinite;
         }
 
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+
+        .result-content {
+            text-align: left;
+        }
+
+        .extracted-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #004d40;
         }
 
         .summary {
@@ -156,7 +179,7 @@
         }
 
         .summary h3 {
-            color: #d32f2f;
+            color: #00796b;
             margin-bottom: 10px;
         }
 
